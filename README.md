@@ -1,3 +1,10 @@
+Présenter par : 
+MUAMBA MPUTU Jonas 
+BITOTA MUKADI Denise 
+KONJI KALALA Jean pièrre
+
+PROBLÈME DE RÉGRESSION LINAEAIRE EN UTILISANT LE DATASET 'CO2 Emissions_Canada'
+
 # CODE-DU-TP
 
 import pandas as pd
