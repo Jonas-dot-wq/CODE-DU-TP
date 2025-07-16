@@ -1,4 +1,4 @@
 # CODE-DU-TP
 
 import keras 
-import 
+import numpy 
