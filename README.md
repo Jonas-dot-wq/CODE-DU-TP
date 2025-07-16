@@ -50,6 +50,7 @@ X_test
 #Entraînement du modèle
 model.fit(X_train, y_train)
 
+# Évaluation du modèle 
 y_pred = model.predict(X_test)
 print("MSE :", mean_squared_error(y_test, y_pred))
 print("R² :", r2_score(y_test, y_pred))
