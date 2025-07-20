@@ -19,7 +19,6 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-
 #Insertion du fichier dans l'environnement google colab 
 from google.colab import files
 uploaded = files.upload()
@@ -27,7 +26,6 @@ print(uploaded)
 
 #Chargement des données
 data = pd.read_csv('CO2 Emissions_Canada.csv')
-
 
 #Sélection des variables pertinentes
 features = ['Engine Size(L)', 'Cylinders', 'Fuel Type', 'Transmission', 'Vehicle Class']
@@ -79,7 +77,6 @@ print(f"R² (Coefficient de détermination): {r2:.4f}")
 
 
 
-
 PROBLEME DE CLASSIFICATION
 DATASET : 'Iris'
 
@@ -105,7 +102,7 @@ X_scaled = scaler.fit_transform(X)
 # Séparation train/test
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_encoded, test_size=0.2, random_state=42)
 
-#Construction du modèle Deep Learning
+# Construction du modèle Deep Learning
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(10, activation='relu', input_shape=(4,)),
     tf.keras.layers.Dense(8, activation='relu'),
