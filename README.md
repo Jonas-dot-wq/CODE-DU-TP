@@ -8,13 +8,21 @@ PROBLÈME DE RÉGRESSION LINEAIRE EN UTILISANT LE DATASET 'CO2 Emissions_Canada'
 # CODE-DU-TP
 
 import pandas as pd
+import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+
+#Insertion du fichier dans l'environnement google colab 
+from google.colab import files
+uploaded = files.upload()
+print(uploaded)
 
 #Chargement des données
 data = pd.read_csv('CO2 Emissions_Canada.csv')
@@ -37,12 +45,11 @@ preprocessor = ColumnTransformer([
 # Modèle ensembliste : Gradient Boosting Regressor
 model = Pipeline([
     ('preproc', preprocessor),
-    ('gbr', GradientBoostingRegressor(n_estimators=200, learning_rate=0.1, max_depth=3, random_state=42))
+    ('gbr', GradientBoostingRegressor(n_estimators=500, learning_rate=0.03, max_depth=5, random_state=42))
 ])
 
 # Division des données
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 
 X_train
 X_test
@@ -51,6 +58,18 @@ X_test
 model.fit(X_train, y_train)
 
 # Évaluation du modèle 
+# (1) Prédiction
 y_pred = model.predict(X_test)
-print("MSE :", mean_squared_error(y_test, y_pred))
-print("R² :", r2_score(y_test, y_pred))
+
+# (2) Calcul des métriques de régression
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_test, y_pred)
+
+# (3) Affichage des résultats
+print("\nRapport de régression après test:")
+print(f"MAE (Erreur Absolue Moyenne): {mae:.4f}")
+print(f"MSE (Erreur Quadratique Moyenne): {mse:.4f}")
+print(f"RMSE (Racine de l'Erreur Quadratique Moyenne): {rmse:.4f}")
+print(f"R² (Coefficient de détermination): {r2:.4f}")
