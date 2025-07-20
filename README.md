@@ -3,11 +3,12 @@ MUAMBA MPUTU Jonas
 BITOTA MUKADI Denise 
 KONJI KALALA Jean pièrre
 
+# CODE-DU-TP
+
 PROBLÈME DE RÉGRESSION LINEAIRE
 DATASET:'CO2 Emissions_Canada'
 
-# CODE-DU-TP
-
+# importations 
 import pandas as pd
 import pandas as pd
 import numpy as np
