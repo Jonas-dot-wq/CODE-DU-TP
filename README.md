@@ -73,3 +73,52 @@ print(f"MAE (Erreur Absolue Moyenne): {mae:.4f}")
 print(f"MSE (Erreur Quadratique Moyenne): {mse:.4f}")
 print(f"RMSE (Racine de l'Erreur Quadratique Moyenne): {rmse:.4f}")
 print(f"R² (Coefficient de détermination): {r2:.4f}")
+
+#------------FIN------------
+
+
+
+
+PROBLEME DE CLASSIFICATION
+DATASET : 'Iris'
+
+# importations
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.utils import to_categorical
+import tensorflow as tf
+
+# Chargement
+data = load_iris()
+X = data.data
+y = data.target
+
+# Encodage catégoriel via Keras
+y_encoded = to_categorical(y)
+
+# Normalisation
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Séparation train/test
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_encoded, test_size=0.2, random_state=42)
+
+#Construction du modèle Deep Learning
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(10, activation='relu', input_shape=(4,)),
+    tf.keras.layers.Dense(8, activation='relu'),
+    tf.keras.layers.Dense(3, activation='softmax')  # 3 classes
+])
+model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Entraînement du modèle
+history = model.fit(X_train, y_train, epochs=100, batch_size=8, validation_split=0.1)
+
+# Évaluation du modèle
+loss, accuracy = model.evaluate(X_test, y_test)
+print(f'Accuracy: {accuracy * 100:.2f}%')
+
+#------------FIN------------
