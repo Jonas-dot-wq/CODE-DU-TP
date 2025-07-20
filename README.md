@@ -73,7 +73,7 @@ print(f"MSE (Erreur Quadratique Moyenne): {mse:.4f}")
 print(f"RMSE (Racine de l'Erreur Quadratique Moyenne): {rmse:.4f}")
 print(f"R² (Coefficient de détermination): {r2:.4f}")
 
-#------------FIN------------
+#--------------FIN--------------
 
 
 
@@ -119,4 +119,4 @@ history = model.fit(X_train, y_train, epochs=100, batch_size=8, validation_split
 loss, accuracy = model.evaluate(X_test, y_test)
 print(f'Accuracy: {accuracy * 100:.2f}%')
 
-#------------FIN------------
+#--------------FIN--------------
