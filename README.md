@@ -1,7 +1,7 @@
 Présenter par : 
 MUAMBA MPUTU Jonas 
 BITOTA MUKADI Denise 
-KONJI KALALA Jean pièrre
+KONJI KALALA Jean-pièrre
 
 # CODE-DU-TP
 
