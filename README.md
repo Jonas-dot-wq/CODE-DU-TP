@@ -19,15 +19,15 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-#Insertion du fichier dans l'environnement google colab 
+# Insertion du fichier dans l'environnement google colab 
 from google.colab import files
 uploaded = files.upload()
 print(uploaded)
 
-#Chargement des données
+# Chargement des données
 data = pd.read_csv('CO2 Emissions_Canada.csv')
 
-#Sélection des variables pertinentes
+# Sélection des variables pertinentes
 features = ['Engine Size(L)', 'Cylinders', 'Fuel Type', 'Transmission', 'Vehicle Class']
 target = 'CO2 Emissions(g/km)'
 X = data[features]
@@ -53,7 +53,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 X_train
 X_test
 
-#Entraînement du modèle
+# Entraînement du modèle
 model.fit(X_train, y_train)
 
 # Évaluation du modèle 
@@ -73,7 +73,7 @@ print(f"MSE (Erreur Quadratique Moyenne): {mse:.4f}")
 print(f"RMSE (Racine de l'Erreur Quadratique Moyenne): {rmse:.4f}")
 print(f"R² (Coefficient de détermination): {r2:.4f}")
 
-#--------------FIN--------------
+# --------------FIN--------------
 
 
 
@@ -119,4 +119,4 @@ history = model.fit(X_train, y_train, epochs=100, batch_size=8, validation_split
 loss, accuracy = model.evaluate(X_test, y_test)
 print(f'Accuracy: {accuracy * 100:.2f}%')
 
-#--------------FIN--------------
+# --------------FIN--------------
